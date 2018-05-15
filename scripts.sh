@@ -11,3 +11,6 @@ tail -f /var/log/foo.log | less -N
 
 # Redirect retrieve files to an output file to avoid repeated calls to server
 seq 1 1989 | xargs -i bash -c "curl -s https://xkcd.com/"{}"/info.0.json | jq -r '.img'" >> xkcdimgs.list
+
+// Distributed crawlers pulls the webpages with 16 parallel processes 
+cat urllist | xargs -P16 wget -i
