@@ -14,3 +14,6 @@ seq 1 1989 | xargs -i bash -c "curl -s https://xkcd.com/"{}"/info.0.json | jq -r
 
 // Distributed crawlers pulls the webpages with 16 parallel processes 
 cat urllist | xargs -P16 wget -i
+
+// Web server load testing 
+seq 1000 | xargs -P 50 -I NONE lwp-request http://localhost:3000
